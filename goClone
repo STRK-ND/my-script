@@ -2,6 +2,11 @@
 # Copyright ©2022 XSans02
 # Just a simple script for auto push aosp-clang
 
+# Function to show an informational message
+msg() {
+    echo -e "\e[1;32m$*\e[0m"
+}
+
 # Set a directory
 export DIR="$(pwd ...)"
 
@@ -14,6 +19,7 @@ git config --global http.postBuffer 524288000
 mkdir ${DIR}/tmp
 cd ${DIR}/tmp
 
+msg "Start Cloning ..."
 wget --quiet https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master/${CLANG_VERSION}.tgz
 tar -xf ${CLANG_VERSION}.tgz
 rm -rf ${CLANG_VERSION}.tgz
