@@ -1,0 +1,22 @@
+name: AOSP Clang
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container: 
+      image: zycromerz/kerneldocker:v3
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Clang Cloning
+      env:
+        GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_PUSH_REPO_URL: ${{ secrets.GH_PUSH_REPO_URL }}
+      run: |
+        bash goClone
