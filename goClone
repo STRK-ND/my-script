@@ -30,6 +30,10 @@ rm -rf ${DIR}/push/*
 cp -rf ${DIR}/tmp/* ${DIR}/push/
 
 msg "Pushing ..."
+
+git config --global user.email "$GH_EMAIL"
+git config --global user.name "$GH_USERNAME"
+
 cd ${DIR}/push/
 git add .
 git commit -s --quiet -m "Import AOSP Clang from https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master/${CLANG_VERSION}"
